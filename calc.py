@@ -30,6 +30,24 @@ def b_sub():
     maths = 'sub'
     fnum = int(first_num)
     e.delete(0,END)
+
+def b_mul():
+    first_num = e.get()
+    global fnum 
+    global maths
+    maths = 'mul'
+    fnum = int(first_num)
+    e.delete(0,END)
+
+def b_div():
+    first_num = e.get()
+    global fnum 
+    global maths
+    maths = 'div'
+    fnum = int(first_num)
+    e.delete(0,END)
+
+
 def eq():
     second_num = e.get()
     e.delete(0,END)
@@ -37,6 +55,10 @@ def eq():
         e.insert(0,fnum + int(second_num))
     if maths == 'sub':
         e.insert(0,fnum - int(second_num))
+    if maths == 'mul':
+        e.insert(0,fnum * int(second_num))
+    if maths == 'div':
+        e.insert(0,fnum / int(second_num))
     
 #defining buttons
 button0 = Button(root,text='0',padx= 40,pady=20,command = lambda : click(0))
@@ -50,17 +72,21 @@ button7 = Button(root,text='7',padx= 40,pady=20,command = lambda : click(7))
 button8 = Button(root,text='8',padx= 40,pady=20,command = lambda : click(8))
 button9 = Button(root,text='9',padx= 40,pady=20,command = lambda : click(9))
 button_add = Button(root,text = '+',padx = 39,pady = 20,command = b_add)
-button_sub = Button(root,text = '-',padx = 40,pady = 20,command = b_sub)
-button_eq = Button(root,text = '=',padx = 87,pady = 20,command = eq)
-button_cls = Button(root,text = 'CLEAR',padx = 25,pady = 20,command = clear)
+button_sub = Button(root,text = '-',padx = 39,pady = 20,command = b_sub)
+button_mul = Button(root,text = '*',padx = 40,pady = 20,command = b_mul)
+button_div = Button(root,text = '/',padx = 40,pady = 20,command = b_div)
+button_eq = Button(root,text = '=',padx = 39,pady = 52,command = eq)
+button_cls = Button(root,text = 'CLEAR',padx = 25,pady = 52,command = clear)
 
 
 #putting buttons on grid
-button_eq.grid(row =5,column =0,columnspan = 2)
-button_cls.grid(row =5,column =2)
-button0.grid(row =4,column =0)
-button_add.grid(row =4,column =1)
-button_sub.grid(row =4,column =2)
+button_eq.grid(row =5,column =2,rowspan=2)
+button_cls.grid(row =5,column =1,rowspan=2)
+button_mul.grid(row=5,column=0)
+button_div.grid(row=6,column=0)
+button0.grid(row =4,column =2)
+button_add.grid(row =4,column =0)
+button_sub.grid(row =4,column =1)
 button1.grid(row =3,column =0)
 button2.grid(row =3,column =1)
 button3.grid(row =3,column =2)
